@@ -1,22 +1,17 @@
-const express   = require('express');
-const routes    = express.Router();
-// const {baseView, loginView, doLogin}  = require('../controller/frontController');
-const {
-    baseView, 
-    loginView, 
-    doLogin,
-    registerPage
-
-}  = require('../controller/frontController');
+const express       = require('express');
+const routes        = express.Router();
+const {home}        = require('../controller/frontController');
+const {view, login, viewRegister, register} = require('../controller/authController');
 
 routes.route('/')
-    .get(baseView);
-
+    .get(home);
 
 routes.route('/login')
-    .get(loginView)
-    .post(doLogin);
+    .get(view)
+    .post(login);
 
 routes.route('/register')
-    .get(registerPage);
+    .get(viewRegister)
+    .post(register);
+
 module.exports = routes;
